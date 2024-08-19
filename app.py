@@ -22,7 +22,7 @@ def user_input_features():
         max_value = float(df[col].max())
         default_value = float(df[col].mean())
         
-        features[col] = st.sidebar.slider(f"{col}", min_value, max_value, default_value)
+        features[col] = st.sidebar.slider(f"{col}", min_value, max_value+100, default_value)
 
     input_df = pd.DataFrame(features, index=[0])
     return input_df
