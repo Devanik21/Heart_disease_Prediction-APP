@@ -17,25 +17,20 @@ st.sidebar.header("Input Features")
 def user_input_features():
     # Adjust sliders for each feature with practical ranges
     features = {}
-    for col in df.columns[:-1]:  # Exclude the label column
-        if col == 'age':
-            min_value, max_value, default_value = 0, 100, 50
-        elif col == 'cholesterol':
-            min_value, max_value, default_value = 100, 400, 200
-        elif col == 'blood_pressure':
-            min_value, max_value, default_value = 80, 200, 120
-        elif col == 'heart_rate':
-            min_value, max_value, default_value = 60, 180, 70
-        elif col == 'blood_sugar':
-            min_value, max_value, default_value = 70, 150, 90
-        # Add other features with specific ranges as needed
-        else:
-            min_value = float(df[col].min())
-            max_value = float(df[col].max())
-            default_value = float(df[col].mean())
-
-        features[col] = st.sidebar.slider(f"{col}", min_value, max_value, default_value)
-
+    features['Age'] = st.sidebar.slider("Age", 0, 100, 50)
+    features['Sex'] = st.sidebar.selectbox("Sex", [0, 1], index=0)  # 0: Female, 1: Male
+    features['Chest pain type'] = st.sidebar.slider("Chest pain type", 1, 4, 3)
+    features['BP'] = st.sidebar.slider("BP", 80, 200, 130)  # Blood pressure
+    features['Cholesterol'] = st.sidebar.slider("Cholesterol", 100, 400, 200)
+    features['FBS over 120'] = st.sidebar.selectbox("FBS over 120", [0, 1], index=0)  # 0: <120, 1: >120
+    features['EKG results'] = st.sidebar.slider("EKG results", 0, 2, 1)
+    features['Max HR'] = st.sidebar.slider("Max HR", 60, 200, 150)
+    features['Exercise angina'] = st.sidebar.selectbox("Exercise angina", [0, 1], index=0)  # 0: No, 1: Yes
+    features['ST depression'] = st.sidebar.slider("ST depression", 0.0, 6.2, 1.0)
+    features['Slope of ST'] = st.sidebar.slider("Slope of ST", 1, 3, 2)
+    features['Number of vessels fluro'] = st.sidebar.slider("Number of vessels fluro", 0, 3, 1)
+    features['Thallium'] = st.sidebar.slider("Thallium", 3, 7, 3)
+    
     input_df = pd.DataFrame(features, index=[0])
     return input_df
 
