@@ -150,7 +150,7 @@ if selected_page == "Prediction":
     """, unsafe_allow_html=True
 )
 
-elif selected_page == "Visualize Data":
+elif selected_page == "Visualize":
     # Code for Visualize Data page
     st.title("Visualize Data")
     st.write("Data visualization content goes here...")
