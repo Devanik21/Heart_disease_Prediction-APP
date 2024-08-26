@@ -1,6 +1,6 @@
 import streamlit as st
 
-def display(df):
+def analyze_page(df):
     st.header("Analyze Data")
     st.write("Perform data analysis here.")
     
