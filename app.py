@@ -16,44 +16,20 @@ df = pd.read_csv("Heart_Disease_Prediction.csv")
 # Load the trained model
 model = joblib.load("RF_heart_disease_model.pkl")
 
-# Add custom CSS
-st.markdown("""
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-        h1 {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .custom-footer {
-            color: #666;
-            font-size: 0.9em;
-        }
-        .prediction-result {
-            background-color: #e7f2ff;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        .prediction-result h4 {
-            color: #0f57a3;
-        }
-    </style>
-""", unsafe_allow_html=True)
 
 # Title of the web app with a colorful header
 st.markdown(
-    "<h1 style='text-align: center; color: #4280f5; font-weight: bold;'>Heart Disease Prediction Web App</h1>", 
+    "<h1 style='text-align: center; color: #4280f5;'>Heart Disease Prediction Web App</h1>", 
     unsafe_allow_html=True
 )
 st.image("heart.jpg", use_column_width=True)  # Replace with your image path
 
-# Sidebar images
+# Add a header image or logo (optional)
 st.sidebar.image("AI.jpg", use_column_width=True)  # Add another image
-
 # Sidebar for user input
 st.sidebar.header("Input Features")
 st.sidebar.markdown("Adjust the sliders or select options to input your health data.")
+
 
 # User input function
 def user_input_features():
@@ -80,6 +56,7 @@ def user_input_features():
     
     return pd.DataFrame(features, index=[0])
 
+
 # Get user input
 input_df = user_input_features()
 
@@ -101,8 +78,8 @@ else:
 # Optionally, add a detailed explanation or note
 st.markdown(
     """
-    <div class="prediction-result">
-        <h4>Important Note:</h4>
+    <div style="background-color: #000000; padding: 20px; border-radius: 10px; margin-top: 20px;">
+        <h4 style="color: #0f57a3;">Important Note:</h4>
         <p>This prediction is based on the model's analysis of your health data. It should not replace professional medical advice. Always consult with a healthcare provider for personalized advice and further evaluation.</p>
     </div>
     """, unsafe_allow_html=True
@@ -111,11 +88,10 @@ st.markdown(
 # Add footer or additional content
 st.markdown(
     """
-    <footer class='custom-footer' style='text-align: center; padding: 10px; margin-top: 30px;'>
-        Handcrafted by <strong>Devanik</strong> | <em>2024</em>
+    <footer style='text-align: center; padding: 10px; margin-top: 30px; color: #666;'>
+        Handcrafted by <strong> Devanik </strong> | <em>2024</em>
     </footer>
     """, unsafe_allow_html=True
 )
-
-# Add a third image to the sidebar
 st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
+
