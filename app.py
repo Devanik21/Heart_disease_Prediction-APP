@@ -186,7 +186,7 @@ elif credits_option == "🤝 Acknowledgments":
         </div>
         """, unsafe_allow_html=True
     )
-elif credits_option == "📧 Contact"":
+elif credits_option == "📧 Contact":
     st.sidebar.markdown(
         """
         <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
