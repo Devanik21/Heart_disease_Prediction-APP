@@ -192,8 +192,10 @@ elif credits_option == "📧 Contact":
         <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
             <h5 style="color: #888;">Contact</h5>
             <p>For inquiries, reach out to <a href="mailto:devanik2005@gmail.com" style="color: #1e90ff; text-decoration: none;">Devanik</a></p>
-
+        </div>
+        """, unsafe_allow_html=True
     )
+
     
 
 
