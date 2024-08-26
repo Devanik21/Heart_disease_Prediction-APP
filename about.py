@@ -14,3 +14,4 @@ def about_page():
     """)
     st.subheader("Contact")
     st.write("For any inquiries, please contact https://www.linkedin.com/in/devanik/")
+    <p>Developed by <a href="https://www.linkedin.com/in/devanik/" target="_blank" style="color: #1e90ff; text-decoration: none;"><strong>Devanik</strong></a> | AI Enthusiast & Data Scientist</p>
