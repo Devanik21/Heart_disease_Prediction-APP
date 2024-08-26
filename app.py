@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import visualize
+import analyze
+import insights
+import about
 
 # Set custom Streamlit theme
 st.set_page_config(
