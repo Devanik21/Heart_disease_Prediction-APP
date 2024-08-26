@@ -155,14 +155,7 @@ if selected_page == "Prediction":
         </footer>
         """, unsafe_allow_html=True
     )
-
-    # Add a third image to the sidebar
-    st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
-    import streamlit as st
-
-
-
-# Add Credits with selectbox and scroll feature
+    # Add Credits with selectbox and scroll feature
 credits_option = st.sidebar.selectbox(
     "More Info",
     ["📜 Credits", "🤝 Acknowledgments", "📧 Contact"],
@@ -200,6 +193,12 @@ elif credits_option == "Contact":
         </div>
         """, unsafe_allow_html=True
     )
+    # Add a third image to the sidebar
+    st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
+    
+
+
+
 
 elif selected_page == "Visualize Data":
     # Code for Visualize Data page
@@ -220,3 +219,6 @@ elif selected_page == "About":
     # Code for About page
     st.title("About")
     st.write("Information about the app goes here...")
+
+
+   
