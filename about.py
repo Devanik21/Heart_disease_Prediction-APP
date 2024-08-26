@@ -1,6 +1,6 @@
 import streamlit as st
 
-def display():
+def about_page():
     st.header("About")
     st.write("""
         This Heart Disease Prediction Web App is designed to help users understand their risk of heart disease
