@@ -22,8 +22,9 @@ st.markdown(
     "<h1 style='text-align: center; color: #4280f5;'>Heart Disease Prediction Web App</h1>", 
     unsafe_allow_html=True
 )
-# Add a header image or logo (optional)
 st.image("heart.jpg", use_column_width=True)  # Replace with your image path
+
+# Add a header image or logo (optional)
 
 # Sidebar for user input
 st.sidebar.header("Input Features")
@@ -88,7 +89,7 @@ st.markdown(
 st.markdown(
     """
     <footer style='text-align: center; padding: 10px; margin-top: 30px; color: #666;'>
-        Powered by <strong>AI </strong> | <em>2024</em>
+        Handcrafted by <strong>[Devanik](https://www.linkedin.com/in/devanik/) </strong> | <em>2024</em>
     </footer>
     """, unsafe_allow_html=True
 )
