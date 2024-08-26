@@ -76,7 +76,7 @@ selected_page = st.sidebar.selectbox(
 )
 
 # Load page based on selection
-if selected_page == "🔍 Prediction":
+if selected_page == "Prediction":
     st.markdown(
         "<h1 style='text-align: center; color: #4280f5; font-weight: bold;'>Heart Disease Prediction Web App</h1>", 
         unsafe_allow_html=True
