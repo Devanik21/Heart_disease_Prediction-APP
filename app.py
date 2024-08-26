@@ -86,14 +86,7 @@ if selected_page == "Prediction":
     st.sidebar.header("Input Features")
     st.sidebar.markdown("Adjust the sliders or select options to input your health data.")
     # Add Credits
-    st.sidebar.markdown(
-    """
-    <div style="border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
-        <h5 style="color: #888;">Credits</h5>
-        <p>Developed by <strong>Devanik</strong> | AI Enthusiast & Data Scientist</p>
-    </div>
-    """, unsafe_allow_html=True
-)
+    
     # User input function
     def user_input_features():
         features = {
@@ -166,7 +159,14 @@ if selected_page == "Prediction":
 
     # Add a third image to the sidebar
     st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
-
+    st.sidebar.markdown(
+    """
+    <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
+        <h5 style="color: #888;">Credits</h5>
+        <p>Developed by <strong>Devanik</strong> | AI Enthusiast & Data Scientist</p>
+    </div>
+    """, unsafe_allow_html=True
+)
 elif selected_page == "Visualize Data":
     # Code for Visualize Data page
     st.title("Visualize Data")
