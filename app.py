@@ -148,7 +148,7 @@ if selected_page == "Prediction":
 
 
     # Add footer or additional content
-    st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
+    
 
     st.markdown(
         """
@@ -168,7 +168,7 @@ credits_option = st.sidebar.selectbox(
 
 
 # Conditional display based on selectbox choice
-if credits_option == "Credits":
+if credits_option == "📜 Credits":
     st.sidebar.markdown(
         """
         <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
@@ -177,7 +177,7 @@ if credits_option == "Credits":
         </div>
         """, unsafe_allow_html=True
     )
-elif credits_option == "Acknowledgments":
+elif credits_option == "🤝 Acknowledgments":
     st.sidebar.markdown(
         """
         <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
@@ -186,7 +186,7 @@ elif credits_option == "Acknowledgments":
         </div>
         """, unsafe_allow_html=True
     )
-elif credits_option == "Contact":
+elif credits_option == "📧 Contact"":
     st.sidebar.markdown(
         """
         <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
@@ -220,5 +220,5 @@ elif selected_page == "About":
     st.title("About")
     st.write("Information about the app goes here...")
 
-
+st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
    
