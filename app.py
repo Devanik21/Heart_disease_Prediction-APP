@@ -46,6 +46,12 @@ def user_input_features():
         'Number of vessels fluro': st.sidebar.slider("Number of vessels detected by Fluoroscopy", 0, 3, 1),
         'Thallium': st.sidebar.slider("Thallium Stress Test Result", 3, 7, 3)
     }
+    
+    # Convert categorical features to numerical
+    features['Sex'] = 1 if features['Sex'] == "Male" else 0
+    features['FBS over 120'] = 1 if features['FBS over 120'] == ">120" else 0
+    features['Exercise angina'] = 1 if features['Exercise angina'] == "Yes" else 0
+    
     return pd.DataFrame(features, index=[0])
 
 # Get user input
