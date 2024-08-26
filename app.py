@@ -148,7 +148,9 @@ if selected_page == "Prediction":
 
 
     # Add footer or additional content
-    st.markdown(
+   
+    # Add a third image to the sidebar
+     st.markdown(
         """
         <footer class='custom-footer' style='text-align: center; padding: 10px; margin-top: 30px;'>
             Handcrafted by <strong>Devanik</strong> | <em>2024</em>
@@ -193,7 +195,6 @@ elif credits_option == "Contact":
         </div>
         """, unsafe_allow_html=True
     )
-    # Add a third image to the sidebar
     st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
     
 
