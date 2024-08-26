@@ -1,19 +1,24 @@
 import streamlit as st
+import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def display(df):
-    st.header("📊 Visualize Data")
-    st.write("Use the visualizations below to explore the dataset.")
-    
-    # Example visualization
+def visualize_page(df):
+    st.title("Visualize Data")
+    st.write("Explore the visualizations of the heart disease dataset.")
+
+    st.subheader("Distribution of Ages")
+    fig, ax = plt.subplots()
+    sns.histplot(df['Age'], bins=30, kde=True, ax=ax)
+    st.pyplot(fig)
+
+    st.subheader("Distribution of Cholesterol Levels")
+    fig, ax = plt.subplots()
+    sns.histplot(df['Cholesterol'], bins=30, kde=True, ax=ax)
+    st.pyplot(fig)
+
     st.subheader("Correlation Heatmap")
+    fig, ax = plt.subplots()
     corr = df.corr()
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(corr, annot=True, cmap='coolwarm', square=True, linewidths=.5)
-    st.pyplot(plt)
-    
-    st.subheader("Distribution of Age")
-    plt.figure(figsize=(10, 6))
-    sns.histplot(df['Age'], kde=True)
-    st.pyplot(plt)
+    sns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', ax=ax)
+    st.pyplot(fig)
