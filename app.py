@@ -89,7 +89,7 @@ st.markdown(
 st.markdown(
     """
     <footer style='text-align: center; padding: 10px; margin-top: 30px; color: #666;'>
-        Handcrafted by <strong>[Devanik](https://www.linkedin.com/in/devanik/) </strong> | <em>2024</em>
+        Handcrafted by <strong> Devanik </strong> | <em>2024</em>
     </footer>
     """, unsafe_allow_html=True
 )
