@@ -148,8 +148,8 @@ if selected_page == "Prediction":
 
 
     # Add footer or additional content
-   
-   
+    st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
+
     st.markdown(
         """
         <footer class='custom-footer' style='text-align: center; padding: 10px; margin-top: 30px;'>
@@ -222,4 +222,3 @@ elif selected_page == "About":
 
 
    
-st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
