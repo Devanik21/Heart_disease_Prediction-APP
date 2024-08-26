@@ -56,7 +56,6 @@ def user_input_features():
     
     return pd.DataFrame(features, index=[0])
 
-st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
 
 # Get user input
 input_df = user_input_features()
@@ -94,3 +93,5 @@ st.markdown(
     </footer>
     """, unsafe_allow_html=True
 )
+st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
+
