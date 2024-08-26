@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def display(df):
-    st.header("Visualize Data")
+    st.header("📊 Visualize Data")
     st.write("Use the visualizations below to explore the dataset.")
     
     # Example visualization
