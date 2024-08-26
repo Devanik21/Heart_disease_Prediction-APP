@@ -85,6 +85,7 @@ if selected_page == "Prediction":
     # Sidebar for user input
     st.sidebar.header("Input Features")
     
+    
     # User input function
     def user_input_features():
         features = {
@@ -165,16 +166,18 @@ elif selected_page == "About":
     st.title("About")
     st.write("Information about the app goes here...")
 
+
     # Add footer or additional content
+    
+
     st.markdown(
         """
         <footer class='custom-footer' style='text-align: center; padding: 10px; margin-top: 30px;'>
-            Handcrafted by <a href="https://www.linkedin.com/in/devanik/" target="_blank" style="color: #1e90ff; text-decoration: none;"><strong>Devanik</strong></a> | <em>2024</em>
+            Handcrafted by <strong>Devanik</strong> | <em>2024</em>
         </footer>
         """, unsafe_allow_html=True
     )
-
-# Add Credits with selectbox and scroll feature
+    # Add Credits with selectbox and scroll feature
 credits_option = st.sidebar.selectbox(
     "More Info",
     ["📜 Credits", "🤝 Acknowledgments", "📧 Contact"],
@@ -182,6 +185,7 @@ credits_option = st.sidebar.selectbox(
     format_func=lambda x: x,
     help="Select to view more details."
 )
+
 
 # Conditional display based on selectbox choice
 if credits_option == "📜 Credits":
@@ -212,5 +216,10 @@ elif credits_option == "📧 Contact":
         """, unsafe_allow_html=True
     )
 
-# Add a third image to the sidebar
+    
+
+
+
+
 st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
+   
