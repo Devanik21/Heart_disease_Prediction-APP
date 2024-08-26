@@ -30,7 +30,6 @@ st.sidebar.image("AI.jpg", use_column_width=True)  # Add another image
 st.sidebar.header("Input Features")
 st.sidebar.markdown("Adjust the sliders or select options to input your health data.")
 
-st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
 
 # User input function
 def user_input_features():
@@ -56,6 +55,8 @@ def user_input_features():
     features['Exercise angina'] = 1 if features['Exercise angina'] == "Yes" else 0
     
     return pd.DataFrame(features, index=[0])
+
+st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
 
 # Get user input
 input_df = user_input_features()
