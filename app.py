@@ -159,14 +159,53 @@ if selected_page == "Prediction":
 
     # Add a third image to the sidebar
     st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
-    st.sidebar.markdown(
-    """
-    <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
-        <h5 style="color: #888;">Credits</h5>
-        <p>Developed by <strong>Devanik</strong> | AI Enthusiast & Data Scientist</p>
-    </div>
-    """, unsafe_allow_html=True
+    import streamlit as st
+
+# Sidebar for user input
+st.sidebar.header("Input Features")
+st.sidebar.markdown("Adjust the sliders or select options to input your health data.")
+
+# Existing input features sliders
+# ...
+
+# Add Credits with selectbox and scroll feature
+credits_option = st.sidebar.selectbox(
+    "More Info",
+    ["Credits", "Acknowledgments", "Contact"],
+    index=0,
+    format_func=lambda x: f"📜 {x}",
+    help="Select to view more details."
 )
+
+# Conditional display based on selectbox choice
+if credits_option == "Credits":
+    st.sidebar.markdown(
+        """
+        <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
+            <h5 style="color: #888;">Credits</h5>
+            <p>Developed by <a href="https://www.linkedin.com/in/devanik/" target="_blank" style="color: #1e90ff; text-decoration: none;"><strong>Devanik</strong></a> | AI Enthusiast & Data Scientist</p>
+        </div>
+        """, unsafe_allow_html=True
+    )
+elif credits_option == "Acknowledgments":
+    st.sidebar.markdown(
+        """
+        <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
+            <h5 style="color: #888;">Acknowledgments</h5>
+            <p>Special thanks to contributors and mentors who have supported this project.</p>
+        </div>
+        """, unsafe_allow_html=True
+    )
+elif credits_option == "Contact":
+    st.sidebar.markdown(
+        """
+        <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
+            <h5 style="color: #888;">Contact</h5>
+            <p>For inquiries, reach out to <a href="mailto:devanik@example.com" style="color: #1e90ff; text-decoration: none;"><strong>Devanik</strong></a> at <a href="mailto:devanik@example.com">devanik@example.com</a></p>
+        </div>
+        """, unsafe_allow_html=True
+    )
+
 elif selected_page == "Visualize Data":
     # Code for Visualize Data page
     st.title("Visualize Data")
