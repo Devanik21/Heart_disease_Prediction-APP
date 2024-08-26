@@ -76,7 +76,7 @@ else:
 st.markdown(
     """
     <div style="background-color: #000000; padding: 20px; border-radius: 10px; margin-top: 20px;">
-        <h4 style="color: #a8d5ed;">Important Note:</h4>
+        <h4 style="color: #0f57a3;">Important Note:</h4>
         <p>This prediction is based on the model's analysis of your health data. It should not replace professional medical advice. Always consult with a healthcare provider for personalized advice and further evaluation.</p>
     </div>
     """, unsafe_allow_html=True
