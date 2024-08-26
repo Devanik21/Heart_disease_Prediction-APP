@@ -86,7 +86,7 @@ st.markdown(
 st.markdown(
     """
     <footer style='text-align: center; padding: 10px; margin-top: 30px; color: #666;'>
-        Powered by <strong>Streamlit</strong> | <strong>AI-Driven Prediction</strong> | <em>2024</em>
+        Powered by <strong>AI </strong> | <em>2024</em>
     </footer>
     """, unsafe_allow_html=True
 )
