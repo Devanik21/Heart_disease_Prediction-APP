@@ -5,7 +5,10 @@ import visualize
 import analyze
 import insights
 import about
-
+from visualize import visualize_page
+from analyze import analyze_page
+from insights import insights_page
+from about import about_page
 # Set custom Streamlit theme
 st.set_page_config(
     page_title="Heart Disease Prediction",
