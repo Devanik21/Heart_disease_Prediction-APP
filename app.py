@@ -28,6 +28,8 @@ st.image("heart.jpg", use_column_width=True)  # Replace with your image path
 # Sidebar for user input
 st.sidebar.header("Input Features")
 st.sidebar.markdown("Adjust the sliders or select options to input your health data.")
+st.sidebar.image("AI.jpg", use_column_width=True)  # Add another image
+#st.sidebar.image("heart_sidebar3.jpg", use_column_width=True)  # Add a third image
 
 # User input function
 def user_input_features():
