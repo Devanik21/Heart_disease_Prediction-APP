@@ -70,7 +70,7 @@ prediction = model.predict(input_df)
 # Display the prediction result with custom messages
 st.subheader('Prediction Result')
 
-if prediction[0] == 1:
+if prediction[0] == 'Warning ! Anomaly  detected in your heart.':
     st.error("⚠️ Warning: Anomaly detected in your heart. There is a risk of heart disease.")
 else:
     st.success("😊 You are safe. No significant risk of heart disease detected.")
