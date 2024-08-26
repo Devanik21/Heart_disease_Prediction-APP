@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def visualize_page(df):
+def visualize_page():
     st.title("Visualize Data")
     st.write("Explore the visualizations of the heart disease dataset.")
 
