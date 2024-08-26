@@ -13,4 +13,4 @@ def about_page():
         Users can input their data, and the model will output the likelihood of having heart disease.
     """)
     st.subheader("Contact")
-    st.write("For any inquiries, please contact us at example@example.com.")
+    st.write("For any inquiries, please contact https://www.linkedin.com/in/devanik/")
