@@ -19,7 +19,7 @@ model = joblib.load("RF_heart_disease_model.pkl")
 
 # Title of the web app with a colorful header
 st.markdown(
-    "<h1 style='text-align: center; color: #0c3b94;'>Heart Disease Prediction Web App</h1>", 
+    "<h1 style='text-align: center; color: #4280f5;'>Heart Disease Prediction Web App</h1>", 
     unsafe_allow_html=True
 )
 # Add a header image or logo (optional)
