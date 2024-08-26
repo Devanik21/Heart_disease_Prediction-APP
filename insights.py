@@ -1,6 +1,6 @@
 import streamlit as st
 
-def display(df):
+def insights_page(df):
     st.header("Insights")
     st.write("Here are some key insights derived from the data.")
     
