@@ -55,12 +55,19 @@ st.markdown("""
 # Sidebar for navigation with tiles
 st.sidebar.title("Navigation")
 
-nav_options = ["Prediction", "Visualize Data", "Analyze Data", "Insights", "About"]
+nav_options = {
+    "Prediction": "🔍 Prediction",
+    "Visualize Data": "📊 Visualize Data",
+    "Analyze Data": "🛰️ Analyze Data",
+    "Insights": "💡 Insights",
+    "About": "ℹ️ About"
+}
+
 selected_page = st.sidebar.selectbox(
     "Go to", 
-    options=nav_options,
+    options=list(nav_options.keys()),
     index=0,
-    format_func=lambda x: f"🧭 {x}",
+    format_func=lambda x: nav_options[x],
     help="Scroll through to select the page."
 )
 
