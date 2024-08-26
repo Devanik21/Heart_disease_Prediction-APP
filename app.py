@@ -195,7 +195,7 @@ elif credits_option == "Contact":
         </div>
         """, unsafe_allow_html=True
     )
-    st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
+    
 
 
 
@@ -222,3 +222,4 @@ elif selected_page == "About":
 
 
    
+st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
