@@ -4,6 +4,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def visualize_page(df):
+    # Ensure the correct data types
+    df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
+    df['Cholesterol'] = pd.to_numeric(df['Cholesterol'], errors='coerce')
+    df.dropna(subset=['Age', 'Cholesterol'], inplace=True)
+    
     st.title("Visualize Data")
     st.write("Explore the visualizations of the heart disease dataset.")
 
