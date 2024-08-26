@@ -2,12 +2,6 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Import other modules
-import visualize
-import analyze
-import insights
-import about
-
 # Set custom Streamlit theme
 st.set_page_config(
     page_title="Heart Disease Prediction",
@@ -16,15 +10,13 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Sidebar for navigation
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Prediction", "Visualize Data", "Analyze Data", "Insights", "About"])
-
-# Load the dataset and model
+# Load the dataset
 df = pd.read_csv("Heart_Disease_Prediction.csv")
+
+# Load the trained model
 model = joblib.load("RF_heart_disease_model.pkl")
 
-# Custom CSS
+# Add custom CSS
 st.markdown("""
     <style>
         body {
@@ -46,18 +38,47 @@ st.markdown("""
         .prediction-result h4 {
             color: #0f57a3;
         }
+        .tile {
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+        .tile:hover {
+            transform: scale(1.05);
+        }
     </style>
 """, unsafe_allow_html=True)
 
-# Title and Images
-st.markdown("<h1 style='text-align: center; color: #4280f5; font-weight: bold;'>Heart Disease Prediction Web App</h1>", unsafe_allow_html=True)
-st.image("heart.jpg", use_column_width=True)  # Replace with your image path
+# Sidebar for navigation with tiles
+st.sidebar.title("Navigation")
 
-# Conditional rendering based on the selected page
-if page == "Prediction":
+nav_options = ["Prediction", "Visualize Data", "Analyze Data", "Insights", "About"]
+selected_page = st.sidebar.selectbox(
+    "Go to", 
+    options=nav_options,
+    index=0,
+    format_func=lambda x: f"🧭 {x}",
+    help="Scroll through to select the page."
+)
+
+# Load page based on selection
+if selected_page == "Prediction":
+    st.markdown(
+        "<h1 style='text-align: center; color: #4280f5; font-weight: bold;'>Heart Disease Prediction Web App</h1>", 
+        unsafe_allow_html=True
+    )
+    st.image("heart.jpg", use_column_width=True)  # Replace with your image path
+
+    # Sidebar images
+    st.sidebar.image("AI.jpg", use_column_width=True)  # Add another image
+
+    # Sidebar for user input
     st.sidebar.header("Input Features")
     st.sidebar.markdown("Adjust the sliders or select options to input your health data.")
-    
+
     # User input function
     def user_input_features():
         features = {
@@ -75,7 +96,7 @@ if page == "Prediction":
             'Number of vessels fluro': st.sidebar.slider("Number of vessels detected by Fluoroscopy", 0, 3, 1),
             'Thallium': st.sidebar.slider("Thallium Stress Test Result", 3, 7, 3)
         }
-
+        
         # Convert categorical features to numerical
         features['Sex'] = 1 if features['Sex'] == "Male" else 0
         features['FBS over 120'] = 1 if features['FBS over 120'] == ">120" else 0
@@ -96,36 +117,49 @@ if page == "Prediction":
     # Display the prediction result with custom messages
     st.subheader('Prediction Result')
 
-    if prediction[0] == 'Warning ! Anomaly  detected in your heart.':
+    if prediction[0] == 1:
         st.error("⚠️ Warning: Anomaly detected in your heart. There is a risk of heart disease.")
     else:
         st.success("😊 You are safe. No significant risk of heart disease detected.")
 
-    # Add a detailed explanation or note
-    st.markdown("""
+    # Optionally, add a detailed explanation or note
+    st.markdown(
+        """
         <div class="prediction-result">
             <h4>Important Note:</h4>
             <p>This prediction is based on the model's analysis of your health data. It should not replace professional medical advice. Always consult with a healthcare provider for personalized advice and further evaluation.</p>
         </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True
+    )
 
-elif page == "Visualize Data":
-    visualize.display(df)
+    # Add footer or additional content
+    st.markdown(
+        """
+        <footer class='custom-footer' style='text-align: center; padding: 10px; margin-top: 30px;'>
+            Handcrafted by <strong>Devanik</strong> | <em>2024</em>
+        </footer>
+        """, unsafe_allow_html=True
+    )
 
-elif page == "Analyze Data":
-    analyze.display(df)
+    # Add a third image to the sidebar
+    st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
 
-elif page == "Insights":
-    insights.display(df)
+elif selected_page == "Visualize Data":
+    # Code for Visualize Data page
+    st.title("Visualize Data")
+    st.write("Data visualization content goes here...")
 
-elif page == "About":
-    about.display()
+elif selected_page == "Analyze Data":
+    # Code for Analyze Data page
+    st.title("Analyze Data")
+    st.write("Data analysis content goes here...")
 
-# Add footer
-st.markdown("""
-    <footer class='custom-footer' style='text-align: center; padding: 10px; margin-top: 30px;'>
-        Handcrafted by <strong>Devanik</strong> | <em>2024</em>
-    </footer>
-""", unsafe_allow_html=True)
+elif selected_page == "Insights":
+    # Code for Insights page
+    st.title("Insights")
+    st.write("Insights content goes here...")
 
-st.sidebar.image("AI_heart.jpg", use_column_width=True)
+elif selected_page == "About":
+    # Code for About page
+    st.title("About")
+    st.write("Information about the app goes here...")
