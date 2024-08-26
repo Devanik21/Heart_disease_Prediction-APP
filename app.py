@@ -5,6 +5,7 @@ from visualize import visualize_page
 from analyze import analyze_page
 from insights import insights_page
 from about import about_page
+
 # Set custom Streamlit theme
 st.set_page_config(
     page_title="Heart Disease Prediction",
@@ -88,8 +89,6 @@ if selected_page == "Prediction":
     # Sidebar for user input
     st.sidebar.header("Input Features")
     
-    
-    # User input function
     def user_input_features():
         features = {
             'Age': st.sidebar.slider("Age", 0, 100, 50),
@@ -114,17 +113,13 @@ if selected_page == "Prediction":
         
         return pd.DataFrame(features, index=[0])
 
-    # Get user input
     input_df = user_input_features()
 
-    # Display user input
     st.subheader('User Input Features')
     st.write(input_df)
 
-    # Make prediction
     prediction = model.predict(input_df)
 
-    # Display the prediction result with custom messages
     st.subheader('Prediction Result')
 
     if prediction[0] == 'Warning ! Anomaly  detected in your heart.':
@@ -132,7 +127,6 @@ if selected_page == "Prediction":
     else:
         st.success("😊 You are safe. No significant risk of heart disease detected.")
 
-    # Optionally, add a detailed explanation or note
     st.markdown(
     """
     <div class="prediction-result" style="
@@ -149,30 +143,17 @@ if selected_page == "Prediction":
     """, unsafe_allow_html=True
 )
 
-elif selected_page == "Visualize":
-    # Code for Visualize Data page
-    st.title("Visualize Data")
-    st.write("Data visualization content goes here...")
+elif selected_page == "Visualize Data":
+    visualize_page(df)
 
-elif selected_page == "🛰️ Analyze Data":
-    # Code for Analyze Data page
-    st.title("Analyze Data")
-    st.write("Data analysis content goes here...")
+elif selected_page == "Analyze Data":
+    analyze_page(df)
 
-elif selected_page == "💡 Insights":
-    # Code for Insights page
-    st.title("Insights")
-    st.write("Insights content goes here...")
+elif selected_page == "Insights":
+    insights_page()
 
-elif selected_page == "ℹ️ About":
-    # Code for About page
-    st.title("About")
-    st.write("Information about the app goes here...")
-
-
-    # Add footer or additional content
-    
-
+elif selected_page == "About":
+    about_page()
     st.markdown(
         """
         <footer class='custom-footer' style='text-align: center; padding: 10px; margin-top: 30px;'>
@@ -180,7 +161,7 @@ elif selected_page == "ℹ️ About":
         </footer>
         """, unsafe_allow_html=True
     )
-    # Add Credits with selectbox and scroll feature
+
 credits_option = st.sidebar.selectbox(
     "More Info",
     ["📜 Credits", "🤝 Acknowledgments", "📧 Contact"],
@@ -189,8 +170,6 @@ credits_option = st.sidebar.selectbox(
     help="Select to view more details."
 )
 
-
-# Conditional display based on selectbox choice
 if credits_option == "📜 Credits":
     st.sidebar.markdown(
         """
@@ -219,10 +198,4 @@ elif credits_option == "📧 Contact":
         """, unsafe_allow_html=True
     )
 
-    
-
-
-
-
-st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
-   
+st.sidebar.image("AI_heart.jpg", use_column_width=True)
