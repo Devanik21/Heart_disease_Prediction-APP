@@ -146,6 +146,26 @@ if selected_page == "Prediction":
     """, unsafe_allow_html=True
 )
 
+elif selected_page == "Visualize Data":
+    # Code for Visualize Data page
+    st.title("Visualize Data")
+    st.write("Data visualization content goes here...")
+
+elif selected_page == "Analyze Data":
+    # Code for Analyze Data page
+    st.title("Analyze Data")
+    st.write("Data analysis content goes here...")
+
+elif selected_page == "Insights":
+    # Code for Insights page
+    st.title("Insights")
+    st.write("Insights content goes here...")
+
+elif selected_page == "About":
+    # Code for About page
+    st.title("About")
+    st.write("Information about the app goes here...")
+
 
     # Add footer or additional content
     
@@ -200,26 +220,6 @@ elif credits_option == "📧 Contact":
 
 
 
-
-elif selected_page == "Visualize Data":
-    # Code for Visualize Data page
-    st.title("Visualize Data")
-    st.write("Data visualization content goes here...")
-
-elif selected_page == "Analyze Data":
-    # Code for Analyze Data page
-    st.title("Analyze Data")
-    st.write("Data analysis content goes here...")
-
-elif selected_page == "Insights":
-    # Code for Insights page
-    st.title("Insights")
-    st.write("Insights content goes here...")
-
-elif selected_page == "About":
-    # Code for About page
-    st.title("About")
-    st.write("Information about the app goes here...")
 
 st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
    
