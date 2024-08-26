@@ -16,20 +16,20 @@ df = pd.read_csv("Heart_Disease_Prediction.csv")
 # Load the trained model
 model = joblib.load("RF_heart_disease_model.pkl")
 
-st.image("heart.jpg", use_column_width=True)  # Replace with your image path
 
 # Title of the web app with a colorful header
 st.markdown(
     "<h1 style='text-align: center; color: #4280f5;'>Heart Disease Prediction Web App</h1>", 
     unsafe_allow_html=True
 )
+st.image("heart.jpg", use_column_width=True)  # Replace with your image path
 
 # Add a header image or logo (optional)
-
+st.sidebar.image("AI.jpg", use_column_width=True)  # Add another image
 # Sidebar for user input
 st.sidebar.header("Input Features")
 st.sidebar.markdown("Adjust the sliders or select options to input your health data.")
-st.sidebar.image("AI.jpg", use_column_width=True)  # Add another image
+
 #st.sidebar.image("heart_sidebar3.jpg", use_column_width=True)  # Add a third image
 
 # User input function
