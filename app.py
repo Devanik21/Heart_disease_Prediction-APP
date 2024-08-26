@@ -84,8 +84,7 @@ if selected_page == "Prediction":
 
     # Sidebar for user input
     st.sidebar.header("Input Features")
-    st.sidebar.markdown("Adjust the sliders or select options to input your health data.")
-    # Add Credits
+    
     
     # User input function
     def user_input_features():
@@ -161,12 +160,7 @@ if selected_page == "Prediction":
     st.sidebar.image("AI_heart.jpg", use_column_width=True)  # Add a third image
     import streamlit as st
 
-# Sidebar for user input
-st.sidebar.header("Input Features")
-st.sidebar.markdown("Adjust the sliders or select options to input your health data.")
 
-# Existing input features sliders
-# ...
 
 # Add Credits with selectbox and scroll feature
 credits_option = st.sidebar.selectbox(
