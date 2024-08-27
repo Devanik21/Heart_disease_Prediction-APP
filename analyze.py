@@ -39,12 +39,19 @@ def analyze_page(df):
     # Correlation Analysis
     st.subheader("Correlation Analysis")
     st.write("Explore the correlation between numeric variables.")
-    corr = df.corr()
+    
+    # Filter numeric columns
+    numeric_df = df.select_dtypes(include=['number'])
+    
+    if not numeric_df.empty:
+        corr = numeric_df.corr()
 
-    fig, ax = plt.subplots(figsize=(12, 8))
-    sns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', ax=ax, linewidths=1, linecolor='black')
-    ax.set_title('Correlation Heatmap', fontsize=16)
-    st.pyplot(fig)
+        fig, ax = plt.subplots(figsize=(12, 8))
+        sns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', ax=ax, linewidths=1, linecolor='black')
+        ax.set_title('Correlation Heatmap', fontsize=16)
+        st.pyplot(fig)
+    else:
+        st.write("No numeric columns available for correlation analysis.")
 
     # Interactive Analysis: Select and Analyze Columns
     st.subheader("Interactive Column Analysis")
@@ -62,7 +69,7 @@ def analyze_page(df):
 
     # Distribution of Numeric Columns
     st.subheader("Distribution of Numeric Columns")
-    numeric_columns = df.select_dtypes(include=['number']).columns
+    numeric_columns = numeric_df.columns
     dist_column = st.selectbox("Select a column to view its distribution", numeric_columns)
     
     if dist_column:
