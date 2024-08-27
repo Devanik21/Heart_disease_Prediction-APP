@@ -44,8 +44,6 @@ def visualize_page(df):
         sns.boxplot(x=numeric_df[boxplot_column], ax=ax)
         st.pyplot(fig)
 
-  
-
     # 3. Violin Plot for Data Distribution
     st.subheader("Violin Plot for Data Distribution")
     violinplot_column = st.selectbox("Select a column for Violin Plot", numeric_df.columns)
@@ -70,6 +68,23 @@ def visualize_page(df):
     if scatter_x and scatter_y:
         fig, ax = plt.subplots()
         sns.scatterplot(x=numeric_df[scatter_x], y=numeric_df[scatter_y], ax=ax)
+        st.pyplot(fig)
+
+    # 6. Line Plot for Trends Over Time
+    st.subheader("Line Plot for Trends Over Time")
+    line_x = st.selectbox("Select X-axis for Line Plot (typically time-based)", numeric_df.columns, index=0)
+    line_y = st.selectbox("Select Y-axis for Line Plot", numeric_df.columns, index=1)
+    if line_x and line_y:
+        fig, ax = plt.subplots()
+        sns.lineplot(x=numeric_df[line_x], y=numeric_df[line_y], ax=ax)
+        st.pyplot(fig)
+
+    # 7. Heatmap for Specific Columns
+    st.subheader("Heatmap for Selected Columns")
+    heatmap_columns = st.multiselect("Select columns for a detailed heatmap", numeric_df.columns, default=numeric_df.columns[:5])
+    if heatmap_columns:
+        fig, ax = plt.subplots()
+        sns.heatmap(numeric_df[heatmap_columns].T, annot=True, cmap='coolwarm', cbar=True, ax=ax)
         st.pyplot(fig)
 
 # Example usage with a sample DataFrame
