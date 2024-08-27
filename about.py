@@ -31,8 +31,8 @@ def about_page():
         - **Model Training:** Using machine learning algorithms to build a predictive model.
         - **Prediction:** Evaluating new data to predict heart disease risk.
 
-        <img src="ML_flowchart.png" alt="Model Flowchart" style="width: 100%; max-width: 600px;"/>  
-    """, unsafe_allow_html=True)
+     st.image("ML_flowchart.png", caption="Model Flowchart", use_column_width=True)
+
 
     # Stay Updated
     st.markdown("<h2 style='color: #2ca02c;'>📩 Stay Updated</h2>", unsafe_allow_html=True)
