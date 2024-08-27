@@ -8,6 +8,9 @@ def visualize_page(df):
     df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
     df['Cholesterol'] = pd.to_numeric(df['Cholesterol'], errors='coerce')
     df.dropna(subset=['Age', 'Cholesterol'], inplace=True)
+
+    
+    numeric_df = df.select_dtypes(include=['number'])
     
     # Filter to include only numeric columns
     numeric_df = df.select_dtypes(include=['number'])
