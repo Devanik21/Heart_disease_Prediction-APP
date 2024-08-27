@@ -34,6 +34,49 @@ def visualize_page(df):
         sns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', ax=ax)
         st.pyplot(fig)
 
+    # Additional Visualizations
+
+    # 1. Boxplot for Outliers
+    st.subheader("Boxplot for Outliers")
+    boxplot_column = st.selectbox("Select a column for Boxplot", numeric_df.columns)
+    if boxplot_column:
+        fig, ax = plt.subplots()
+        sns.boxplot(x=numeric_df[boxplot_column], ax=ax)
+        st.pyplot(fig)
+
+    # 2. Pairplot for Feature Relationships
+    st.subheader("Pairplot for Feature Relationships")
+    pairplot_columns = st.multiselect("Select columns for Pairplot", numeric_df.columns, default=numeric_df.columns[:3])
+    if len(pairplot_columns) > 1:
+        fig = sns.pairplot(df[pairplot_columns])
+        st.pyplot(fig)
+
+    # 3. Violin Plot for Data Distribution
+    st.subheader("Violin Plot for Data Distribution")
+    violinplot_column = st.selectbox("Select a column for Violin Plot", numeric_df.columns)
+    if violinplot_column:
+        fig, ax = plt.subplots()
+        sns.violinplot(x=numeric_df[violinplot_column], ax=ax)
+        st.pyplot(fig)
+
+    # 4. Count Plot for Categorical Data
+    st.subheader("Count Plot for Categorical Data")
+    categorical_columns = df.select_dtypes(include=['object']).columns
+    countplot_column = st.selectbox("Select a categorical column for Count Plot", categorical_columns)
+    if countplot_column:
+        fig, ax = plt.subplots()
+        sns.countplot(x=df[countplot_column], ax=ax)
+        st.pyplot(fig)
+
+    # 5. Scatter Plot for Two Variables
+    st.subheader("Scatter Plot for Two Variables")
+    scatter_x = st.selectbox("Select X-axis for Scatter Plot", numeric_df.columns, index=0)
+    scatter_y = st.selectbox("Select Y-axis for Scatter Plot", numeric_df.columns, index=1)
+    if scatter_x and scatter_y:
+        fig, ax = plt.subplots()
+        sns.scatterplot(x=numeric_df[scatter_x], y=numeric_df[scatter_y], ax=ax)
+        st.pyplot(fig)
+
 # Example usage with a sample DataFrame
 # df = pd.read_csv('your_dataset.csv')
 # visualize_page(df)
