@@ -139,7 +139,7 @@ def analyze_page(df):
     bar_column = st.selectbox("Select a categorical column for Bar Plot", categorical_columns)
     if bar_column:
         bar_data = df[bar_column].value_counts()
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = plt.subplots(figsize=(12, 10))
         sns.barplot(x=bar_data.index, y=bar_data.values, palette='viridis', ax=ax)
         ax.set_title(f'Bar Plot of {bar_column}', fontsize=16)
         ax.set_xlabel(f'{bar_column}', fontsize=12)
