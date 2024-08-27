@@ -30,14 +30,15 @@ def about_page():
         - **Data Preprocessing:** Cleaning and normalizing the dataset.
         - **Model Training:** Using machine learning algorithms to build a predictive model.
         - **Prediction:** Evaluating new data to predict heart disease risk.
+    """)
 
-     st.image("ML_flowchart.png", caption="Model Flowchart", use_column_width=True)
-
+    # Display the image
+    st.image("ML_flowchart.png", caption="Model Flowchart", use_column_width=True)
 
     # Stay Updated
     st.markdown("<h2 style='color: #2ca02c;'>📩 Stay Updated</h2>", unsafe_allow_html=True)
     st.write("""
-        Want to stay in the loop? Subscribe to our newsletter for the latest updates, health tips, and more! [Subscribe Here][LinkedIn](https://www.linkedin.com/in/devanik/) 
+        Want to stay in the loop? Subscribe to our newsletter for the latest updates, health tips, and more! [Subscribe Here](https://www.linkedin.com/in/devanik/)
     """)
 
     # Acknowledgments
