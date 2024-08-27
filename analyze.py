@@ -22,10 +22,11 @@ def analyze_page(df):
     # Missing Data Visualization
     st.subheader("Missing Data Analysis")
     missing_data = df.isnull().sum()
+    st.write("Number of missing values in each column:")
     st.write(missing_data)
 
     if missing_data.sum() > 0:
-        fig, ax = plt.subplots(figsize=(12, 8))
+        fig, ax = plt.subplots(figsize=(14, 8))
         sns.heatmap(df.isnull(), cbar=False, cmap='viridis', ax=ax, linewidths=0.5)
         ax.set_title('Missing Data Heatmap', fontsize=18, fontweight='bold')
         ax.set_xlabel('Columns', fontsize=14)
@@ -36,6 +37,7 @@ def analyze_page(df):
 
     # Data Types
     st.subheader("Data Types")
+    st.write("Data types of each column:")
     st.write(df.dtypes)
 
     # Correlation Analysis
@@ -48,7 +50,7 @@ def analyze_page(df):
     if not numeric_df.empty:
         corr = numeric_df.corr()
 
-        fig, ax = plt.subplots(figsize=(16, 10))
+        fig, ax = plt.subplots(figsize=(16, 12))
         sns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', ax=ax, linewidths=1, linecolor='black')
         ax.set_title('Correlation Heatmap', fontsize=18, fontweight='bold')
         st.pyplot(fig)
@@ -73,8 +75,10 @@ def analyze_page(df):
             
             if pd.api.types.is_numeric_dtype(df[col]):
                 st.write(f"Distribution of {col}:")
+                bins = st.slider(f"Select number of bins for {col}", min_value=10, max_value=100, value=30)
+                kde = st.checkbox(f"Add KDE for {col}", value=True)
                 fig, ax = plt.subplots(figsize=(12, 8))
-                sns.histplot(df[col], bins=30, kde=True, color='mediumseagreen', edgecolor='black', ax=ax)
+                sns.histplot(df[col], bins=bins, kde=kde, color='mediumseagreen', edgecolor='black', ax=ax)
                 ax.set_title(f'Distribution of {col}', fontsize=18, fontweight='bold')
                 ax.set_xlabel(f'{col}', fontsize=14)
                 ax.set_ylabel('Frequency', fontsize=14)
@@ -86,8 +90,10 @@ def analyze_page(df):
     dist_column = st.selectbox("Select a column to view its distribution", numeric_columns)
     
     if dist_column:
+        bins = st.slider(f"Select number of bins for {dist_column}", min_value=10, max_value=100, value=30)
+        kde = st.checkbox(f"Add KDE for {dist_column}", value=True)
         fig, ax = plt.subplots(figsize=(12, 8))
-        sns.histplot(df[dist_column], bins=30, kde=True, color='mediumseagreen', edgecolor='black', ax=ax)
+        sns.histplot(df[dist_column], bins=bins, kde=kde, color='mediumseagreen', edgecolor='black', ax=ax)
         ax.set_title(f'Distribution of {dist_column}', fontsize=18, fontweight='bold')
         ax.set_xlabel(f'{dist_column}', fontsize=14)
         ax.set_ylabel('Frequency', fontsize=14)
@@ -144,12 +150,15 @@ def analyze_page(df):
     # Custom Interactive Widgets
     st.sidebar.header("Advanced Filters")
     min_value, max_value = st.sidebar.slider(
-        "Select the range of age",
-        min_value=20,
-        max_value=100,
-        value=(20,100)
+        "Select the range of values for numeric column",
+        min_value=int(df[numeric_columns[0]].min()),
+        max_value=int(df[numeric_columns[0]].max()),
+        value=(int(df[numeric_columns[0]].min()), int(df[numeric_columns[0]].max()))
     )
 
     filtered_df = df[(df[numeric_columns[0]] >= min_value) & (df[numeric_columns[0]] <= max_value)]
     st.write(f"Filtered dataset based on the selected range: {min_value} - {max_value}")
     st.write(filtered_df)
+
+    if st.sidebar.button("Reset Filters"):
+        st.experimental_rerun()
