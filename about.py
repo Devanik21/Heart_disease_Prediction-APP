@@ -31,7 +31,7 @@ def about_page():
         - **Model Training:** Using machine learning algorithms to build a predictive model.
         - **Prediction:** Evaluating new data to predict heart disease risk.
 
-        <img src="https://example.com/flowchart.png" alt="Model Flowchart" style="width: 100%; max-width: 600px;"/>  # Replace with a real image URL or path
+        <img src="ML_flowchart.png" alt="Model Flowchart" style="width: 100%; max-width: 600px;"/>  
     """, unsafe_allow_html=True)
 
     # Stay Updated
