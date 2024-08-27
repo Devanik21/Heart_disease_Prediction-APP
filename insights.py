@@ -83,8 +83,8 @@ def insights_page(df):
     st.sidebar.header("🔍 Explore Further")
     st.sidebar.write("Use these options to filter and explore the dataset further.")
     
-    min_age, max_age = st.sidebar.slider("Select Age Range", min_value=int(df['Age'].min()), max_value=int(df['Age'].max()), value=(30, 70))
-    min_cholesterol, max_cholesterol = st.sidebar.slider("Select Cholesterol Range", min_value=int(df['Cholesterol'].min()), max_value=int(df['Cholesterol'].max()), value=(100, 300))
+    min_age, max_age = st.sidebar.slider("Select Age Range", min_value=10, max_value=100, value=(10, 70))
+    min_cholesterol, max_cholesterol = st.sidebar.slider("Select Cholesterol Range", min_value=50, max_value=600, value=(50, 300))
     
     filtered_df = df[(df['Age'] >= min_age) & (df['Age'] <= max_age) & (df['Cholesterol'] >= min_cholesterol) & (df['Cholesterol'] <= max_cholesterol)]
     st.sidebar.write(f"**Filtered Data Preview:**")
