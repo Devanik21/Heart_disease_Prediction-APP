@@ -148,12 +148,12 @@ def analyze_page(df):
         st.pyplot(fig)
 
     # Custom Interactive Widgets
-    st.sidebar.header("🔧 Advanced Filters")
+    st.sidebar.header("🛩️ Advanced Filters")
     min_value, max_value = st.sidebar.slider(
-        "Select the range of values for numeric column",
-        min_value=int(df[numeric_columns[0]].min()),
-        max_value=int(df[numeric_columns[0]].max()),
-        value=(int(df[numeric_columns[0]].min()), int(df[numeric_columns[0]].max()))
+        "Select the range of Age",
+        min_value=10,
+        max_value=100,
+        value=(10,100)
     )
 
     filtered_df = df[(df[numeric_columns[0]] >= min_value) & (df[numeric_columns[0]] <= max_value)]
