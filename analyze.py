@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 def analyze_page(df):
     st.header("Advanced Data Analysis")
-    st.write("Perform comprehensive data analysis and explore key insights.")
+    st.write("Perform comprehensive data analysis and explore key insights with interactive and professional visualizations.")
 
     # Set the global seaborn style
     sns.set_theme(style="whitegrid", context="talk")
@@ -25,9 +25,11 @@ def analyze_page(df):
     st.write(missing_data)
 
     if missing_data.sum() > 0:
-        fig, ax = plt.subplots(figsize=(10, 6))
-        sns.heatmap(df.isnull(), cbar=False, cmap='viridis', ax=ax)
-        ax.set_title('Missing Data Heatmap', fontsize=16)
+        fig, ax = plt.subplots(figsize=(12, 8))
+        sns.heatmap(df.isnull(), cbar=False, cmap='viridis', ax=ax, linewidths=0.5)
+        ax.set_title('Missing Data Heatmap', fontsize=18, fontweight='bold')
+        ax.set_xlabel('Columns', fontsize=14)
+        ax.set_ylabel('Rows', fontsize=14)
         st.pyplot(fig)
     else:
         st.write("No missing data in the dataset.")
@@ -46,9 +48,9 @@ def analyze_page(df):
     if not numeric_df.empty:
         corr = numeric_df.corr()
 
-        fig, ax = plt.subplots(figsize=(12, 8))
+        fig, ax = plt.subplots(figsize=(16, 10))
         sns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', ax=ax, linewidths=1, linecolor='black')
-        ax.set_title('Correlation Heatmap', fontsize=16)
+        ax.set_title('Correlation Heatmap', fontsize=18, fontweight='bold')
         st.pyplot(fig)
     else:
         st.write("No numeric columns available for correlation analysis.")
@@ -71,9 +73,9 @@ def analyze_page(df):
             
             if pd.api.types.is_numeric_dtype(df[col]):
                 st.write(f"Distribution of {col}:")
-                fig, ax = plt.subplots(figsize=(10, 6))
-                sns.histplot(df[col], bins=30, kde=True, color='mediumseagreen', edgecolor='black')
-                ax.set_title(f'Distribution of {col}', fontsize=16)
+                fig, ax = plt.subplots(figsize=(12, 8))
+                sns.histplot(df[col], bins=30, kde=True, color='mediumseagreen', edgecolor='black', ax=ax)
+                ax.set_title(f'Distribution of {col}', fontsize=18, fontweight='bold')
                 ax.set_xlabel(f'{col}', fontsize=14)
                 ax.set_ylabel('Frequency', fontsize=14)
                 st.pyplot(fig)
@@ -84,9 +86,9 @@ def analyze_page(df):
     dist_column = st.selectbox("Select a column to view its distribution", numeric_columns)
     
     if dist_column:
-        fig, ax = plt.subplots(figsize=(10, 6))
-        sns.histplot(df[dist_column], bins=30, kde=True, color='mediumseagreen', edgecolor='black')
-        ax.set_title(f'Distribution of {dist_column}', fontsize=16)
+        fig, ax = plt.subplots(figsize=(12, 8))
+        sns.histplot(df[dist_column], bins=30, kde=True, color='mediumseagreen', edgecolor='black', ax=ax)
+        ax.set_title(f'Distribution of {dist_column}', fontsize=18, fontweight='bold')
         ax.set_xlabel(f'{dist_column}', fontsize=14)
         ax.set_ylabel('Frequency', fontsize=14)
         st.pyplot(fig)
@@ -97,20 +99,22 @@ def analyze_page(df):
     st.subheader("Box Plot")
     box_column = st.selectbox("Select a numeric column for Box Plot", numeric_columns)
     if box_column:
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = plt.subplots(figsize=(12, 8))
         sns.boxplot(x=df[box_column], color='lightcoral', ax=ax)
-        ax.set_title(f'Box Plot of {box_column}', fontsize=16)
+        ax.set_title(f'Box Plot of {box_column}', fontsize=18, fontweight='bold')
         ax.set_xlabel(f'{box_column}', fontsize=14)
+        ax.set_ylabel('Values', fontsize=14)
         st.pyplot(fig)
 
     # Violin Plot
     st.subheader("Violin Plot")
     violin_column = st.selectbox("Select a numeric column for Violin Plot", numeric_columns)
     if violin_column:
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = plt.subplots(figsize=(12, 8))
         sns.violinplot(x=df[violin_column], color='skyblue', ax=ax)
-        ax.set_title(f'Violin Plot of {violin_column}', fontsize=16)
+        ax.set_title(f'Violin Plot of {violin_column}', fontsize=18, fontweight='bold')
         ax.set_xlabel(f'{violin_column}', fontsize=14)
+        ax.set_ylabel('Density', fontsize=14)
         st.pyplot(fig)
 
     # Count Plot
@@ -118,20 +122,11 @@ def analyze_page(df):
     categorical_columns = df.select_dtypes(include=['object']).columns
     count_column = st.selectbox("Select a categorical column for Count Plot", categorical_columns)
     if count_column:
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = plt.subplots(figsize=(12, 8))
         sns.countplot(x=df[count_column], palette='pastel', ax=ax)
-        ax.set_title(f'Count Plot of {count_column}', fontsize=16)
+        ax.set_title(f'Count Plot of {count_column}', fontsize=18, fontweight='bold')
         ax.set_xlabel(f'{count_column}', fontsize=14)
         ax.set_ylabel('Count', fontsize=14)
-        st.pyplot(fig)
-
-    # Joint Plot
-    st.subheader("Joint Plot")
-    joint_x = st.selectbox("Select the X column for Joint Plot", numeric_columns)
-    joint_y = st.selectbox("Select the Y column for Joint Plot", numeric_columns)
-    if joint_x and joint_y:
-        fig = plt.figure(figsize=(10, 6))
-        sns.jointplot(x=df[joint_x], y=df[joint_y], kind='scatter', color='purple')
         st.pyplot(fig)
 
     # Bar Plot
@@ -139,9 +134,22 @@ def analyze_page(df):
     bar_column = st.selectbox("Select a categorical column for Bar Plot", categorical_columns)
     if bar_column:
         bar_data = df[bar_column].value_counts()
-        fig, ax = plt.subplots(figsize=(12, 10))
+        fig, ax = plt.subplots(figsize=(14, 10))
         sns.barplot(x=bar_data.index, y=bar_data.values, palette='viridis', ax=ax)
-        ax.set_title(f'Bar Plot of {bar_column}', fontsize=16)
-        ax.set_xlabel(f'{bar_column}', fontsize=12)
+        ax.set_title(f'Bar Plot of {bar_column}', fontsize=18, fontweight='bold')
+        ax.set_xlabel(f'{bar_column}', fontsize=14)
         ax.set_ylabel('Count', fontsize=14)
         st.pyplot(fig)
+
+    # Custom Interactive Widgets
+    st.sidebar.header("Advanced Filters")
+    min_value, max_value = st.sidebar.slider(
+        "Select the range of values for numeric columns",
+        min_value=int(df[numeric_columns[0]].min()),
+        max_value=int(df[numeric_columns[0]].max()),
+        value=(int(df[numeric_columns[0]].min()), int(df[numeric_columns[0]].max()))
+    )
+
+    filtered_df = df[(df[numeric_columns[0]] >= min_value) & (df[numeric_columns[0]] <= max_value)]
+    st.write(f"Filtered dataset based on the selected range: {min_value} - {max_value}")
+    st.write(filtered_df)
