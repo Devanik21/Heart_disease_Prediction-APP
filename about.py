@@ -37,7 +37,7 @@ def about_page():
     # Stay Updated
     st.markdown("<h2 style='color: #2ca02c;'>📩 Stay Updated</h2>", unsafe_allow_html=True)
     st.write("""
-        Want to stay in the loop? Subscribe to our newsletter for the latest updates, health tips, and more! [Subscribe Here](https://example.com/subscribe)  # Replace with a real subscription link
+        Want to stay in the loop? Subscribe to our newsletter for the latest updates, health tips, and more! [Subscribe Here]([LinkedIn](https://www.linkedin.com/in/devanik/))  
     """)
 
     # Acknowledgments
