@@ -15,8 +15,8 @@ def visualize_page(df):
     # Set the global seaborn style
     sns.set_theme(style="whitegrid", context="talk")
     
-    st.title("🌟 Advanced Data Visualization 🌟")
-    st.write("Explore the visualizations of the heart disease dataset with advanced features. 🎨📊")
+    st.title("🌟 Advanced Data Visualization ")
+    st.write("Explore the visualizations of the heart disease dataset with advanced features. 📊")
 
     # Let the user choose the column to visualize
     selected_column = st.selectbox("🔍 Select a column to visualize", numeric_df.columns)
