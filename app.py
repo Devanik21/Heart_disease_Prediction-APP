@@ -150,7 +150,7 @@ elif selected_page == "Analyze Data":
     analyze_page(df)
 
 elif selected_page == "Insights":
-    insights_page()
+    insights_page(df)
 
 elif selected_page == "About":
     about_page()
