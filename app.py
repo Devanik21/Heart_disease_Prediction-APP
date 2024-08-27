@@ -60,9 +60,9 @@ st.markdown("""
 st.sidebar.title("Navigation")
 
 nav_options = {
-    "Prediction": "🔍 Prediction",
+    "Prediction": "🪄 Prediction",
     "Visualize Data": "📊 Visualize Data",
-    "Analyze Data": "🛰️ Analyze Data",
+    "Analyze Data": "🔍 Analyze Data",
     "Insights": "💡 Insights",
     "About": "ℹ️ About"
 }
