@@ -25,6 +25,11 @@ st.markdown("""
     <style>
         body {
             font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
         }
         h1 {
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -38,20 +43,26 @@ st.markdown("""
             padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
         }
         .prediction-result h4 {
             color: #0f57a3;
         }
         .tile {
-            background-color: #f1f1f1;
+            background-color: #ffffff;
             border-radius: 10px;
             padding: 20px;
             text-align: center;
             margin-bottom: 15px;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
         }
         .tile:hover {
             transform: scale(1.05);
+            box-shadow: 0px 8px 12px rgba(0,0,0,0.2);
+        }
+        .sidebar .stSelectbox {
+            margin-top: 10px;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -78,7 +89,7 @@ selected_page = st.sidebar.selectbox(
 # Load page based on selection
 if selected_page == "Prediction":
     st.markdown(
-        "<h1 style='text-align: center; color: #4280f5; font-weight: bold;'>Heart Disease Prediction Web App</h1>", 
+        "<h1 style='text-align: center;'>Heart Disease Prediction Web App</h1>", 
         unsafe_allow_html=True
     )
     st.image("heart.jpg", use_column_width=True)  # Replace with your image path
@@ -129,15 +140,8 @@ if selected_page == "Prediction":
 
     st.markdown(
     """
-    <div class="prediction-result" style="
-        background-color: #2c3e50;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 20px;
-        box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-        color: #ecf0f1;
-    ">
-        <h4 style="color: #1abc9c;">Important Note:</h4>
+    <div class="prediction-result">
+        <h4>Important Note:</h4>
         <p>This prediction is based on the model's analysis of your health data. It should not replace professional medical advice. Always consult with a healthcare provider for personalized advice and further evaluation.</p>
     </div>
     """, unsafe_allow_html=True
@@ -162,6 +166,7 @@ elif selected_page == "About":
         """, unsafe_allow_html=True
     )
 
+# Sidebar for additional info
 credits_option = st.sidebar.selectbox(
     "More Info",
     ["📜 Credits", "🤝 Acknowledgments", "📧 Contact"],
@@ -174,8 +179,8 @@ if credits_option == "📜 Credits":
     st.sidebar.markdown(
         """
         <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
-            <h5 style="color: #888;">Credits</h5>
-            <p>Developed by <a href="https://www.linkedin.com/in/devanik/" target="_blank" style="color: #1e90ff; text-decoration: none;"><strong>Devanik</strong></a> | AI Enthusiast & Data Scientist</p>
+            <h5>Credits</h5>
+            <p>Developed by <a href="https://www.linkedin.com/in/devanik/" target="_blank" style="color: #1e90ff;">Devanik</a> | AI Enthusiast & Data Scientist</p>
         </div>
         """, unsafe_allow_html=True
     )
@@ -183,7 +188,7 @@ elif credits_option == "🤝 Acknowledgments":
     st.sidebar.markdown(
         """
         <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
-            <h5 style="color: #888;">Acknowledgments</h5>
+            <h5>Acknowledgments</h5>
             <p>Special thanks to the mentors who have supported me to grasp ML concepts.</p>
         </div>
         """, unsafe_allow_html=True
@@ -192,8 +197,8 @@ elif credits_option == "📧 Contact":
     st.sidebar.markdown(
         """
         <div style="overflow-y: auto; max-height: 500px; border-top: 2px solid #ddd; margin-top: 20px; padding-top: 10px;">
-            <h5 style="color: #888;">Contact</h5>
-            <p>For inquiries, reach out to <a href="mailto:devanik2005@gmail.com" style="color: #1e90ff; text-decoration: none;">Devanik</a></p>
+            <h5>Contact</h5>
+            <p>For inquiries, reach out to <a href="mailto:devanik2005@gmail.com" style="color: #1e90ff;">Devanik</a></p>
         </div>
         """, unsafe_allow_html=True
     )
