@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy as np
 
 def insights_page(df):
     st.header("🔍 Key Insights & Analysis")
@@ -75,16 +74,56 @@ def insights_page(df):
     ax.spines['right'].set_visible(False)
     st.pyplot(fig)
 
+    # Additional Plot: Boxplot for Cholesterol Levels
+    st.subheader("📦 Boxplot of Cholesterol Levels")
+    st.write("Visualizing the spread and outliers in cholesterol levels.")
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sns.boxplot(x=df['Cholesterol'], color='lightcoral', ax=ax)
+    ax.set_facecolor('lavender')
+    ax.set_title('Boxplot of Cholesterol Levels', fontsize=18, color='darkred')
+    ax.set_xlabel('Cholesterol Level', fontsize=14)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    st.pyplot(fig)
+
+    # Additional Plot: Age Distribution in Cholesterol Ranges
+    st.subheader("📉 Age Distribution in Cholesterol Ranges")
+    st.write("Examining how age varies across different cholesterol levels.")
+
+    cholesterol_bins = st.slider("Select number of Cholesterol Bins for Age Distribution", min_value=5, max_value=30, value=10)
+    df['Cholesterol_Bin'] = pd.cut(df['Cholesterol'], bins=cholesterol_bins)
+
+    fig, ax = plt.subplots(figsize=(12, 8))
+    sns.boxplot(x='Cholesterol_Bin', y='Age', data=df, palette='viridis', ax=ax)
+    ax.set_facecolor('lightgoldenrodyellow')
+    ax.set_title('Age Distribution Across Cholesterol Ranges', fontsize=18, color='purple')
+    ax.set_xlabel('Cholesterol Range', fontsize=14)
+    ax.set_ylabel('Age', fontsize=14)
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    st.pyplot(fig)
+
+    # Additional Plot: Pair Plot for Multi-Variable Relationships
+    st.subheader("🔄 Pair Plot for Multi-Variable Relationships")
+    st.write("Explore relationships between multiple numeric variables.")
+
+    pairplot_columns = st.multiselect("Select columns for Pair Plot", df.select_dtypes(include=['number']).columns, default=df.select_dtypes(include=['number']).columns[:4].tolist())
+    if len(pairplot_columns) > 1:
+        fig = sns.pairplot(df[pairplot_columns], diag_kind='kde', palette='coolwarm')
+        st.pyplot(fig)
+
     # Summary
     st.subheader("📈 Summary")
-    st.write("These insights shed light on important factors related to heart disease risk. The analysis emphasizes the significance of age and cholesterol levels.")
+    st.write("These insights shed light on important factors related to heart disease risk. The analysis emphasizes the significance of age, cholesterol levels, and their interactions.")
 
     # Interactive Widgets for Further Exploration
     st.sidebar.header("🔍 Explore Further")
     st.sidebar.write("Use these options to filter and explore the dataset further.")
     
-    min_age, max_age = st.sidebar.slider("Select Age Range", min_value=10, max_value=100, value=(10, 70))
-    min_cholesterol, max_cholesterol = st.sidebar.slider("Select Cholesterol Range", min_value=50, max_value=600, value=(50, 300))
+    min_age, max_age = st.sidebar.slider("Select Age Range", min_value=int(df['Age'].min()), max_value=int(df['Age'].max()), value=(int(df['Age'].min()), int(df['Age'].max())))
+    min_cholesterol, max_cholesterol = st.sidebar.slider("Select Cholesterol Range", min_value=int(df['Cholesterol'].min()), max_value=int(df['Cholesterol'].max()), value=(int(df['Cholesterol'].min()), int(df['Cholesterol'].max())))
     
     filtered_df = df[(df['Age'] >= min_age) & (df['Age'] <= max_age) & (df['Cholesterol'] >= min_cholesterol) & (df['Cholesterol'] <= max_cholesterol)]
     st.sidebar.write(f"**Filtered Data Preview:**")
