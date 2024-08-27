@@ -130,7 +130,7 @@ def analyze_page(df):
     if count_column:
         fig, ax = plt.subplots(figsize=(12, 8))
         sns.countplot(x=df[count_column], palette='pastel', ax=ax)
-        ax.set_title(f'Count Plot of {count_column}', fontsize=18, fontweight='bold', color='darkorange')
+        ax.set_title(f'Count Plot of {count_column}', fontsize=18, fontweight='bold', color='brown')
         ax.set_xlabel(f'{count_column}', fontsize=14)
         ax.set_ylabel('Count', fontsize=14)
         st.pyplot(fig)
