@@ -44,12 +44,16 @@ def visualize_page(df):
         sns.boxplot(x=numeric_df[boxplot_column], ax=ax)
         st.pyplot(fig)
 
-    # 2. Pairplot for Feature Relationships
-    st.subheader("Pairplot for Feature Relationships")
-    pairplot_columns = st.multiselect("Select columns for Pairplot", numeric_df.columns, default=numeric_df.columns[:3])
-    if len(pairplot_columns) > 1:
-        fig = sns.pairplot(df[pairplot_columns])
+# 2. Pairplot for Feature Relationships
+st.subheader("Pairplot for Feature Relationships")
+pairplot_columns = st.multiselect("Select columns for Pairplot", numeric_df.columns, default=numeric_df.columns[:3])
+
+if len(pairplot_columns) > 1:
+    pairplot_df = numeric_df[pairplot_columns]
+    if not pairplot_df.empty:
+        fig = sns.pairplot(pairplot_df)
         st.pyplot(fig)
+
 
     # 3. Violin Plot for Data Distribution
     st.subheader("Violin Plot for Data Distribution")
