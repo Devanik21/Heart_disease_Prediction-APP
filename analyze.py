@@ -53,21 +53,32 @@ def analyze_page(df):
     else:
         st.write("No numeric columns available for correlation analysis.")
 
-    # Interactive Analysis: Select and Analyze Columns
+    # Interactive Column Analysis: Select Columns
     st.subheader("Interactive Column Analysis")
     st.write("Select columns to analyze their summary statistics, data types, and unique values.")
-
+    
     selected_columns = st.multiselect("Select columns to analyze", df.columns)
     
     if selected_columns:
+        st.write("Summary Statistics:")
         st.write(df[selected_columns].describe())
         st.write("Data Types:")
         st.write(df[selected_columns].dtypes)
+        
         for col in selected_columns:
             st.write(f"Unique values in {col}:")
             st.write(df[col].unique())
+            
+            if pd.api.types.is_numeric_dtype(df[col]):
+                st.write(f"Distribution of {col}:")
+                fig, ax = plt.subplots(figsize=(10, 6))
+                sns.histplot(df[col], bins=30, kde=True, color='mediumseagreen', edgecolor='black')
+                ax.set_title(f'Distribution of {col}', fontsize=16)
+                ax.set_xlabel(f'{col}', fontsize=14)
+                ax.set_ylabel('Frequency', fontsize=14)
+                st.pyplot(fig)
 
-    # Distribution of Numeric Columns
+    # Distribution of Numeric Columns (Overall)
     st.subheader("Distribution of Numeric Columns")
     numeric_columns = numeric_df.columns
     dist_column = st.selectbox("Select a column to view its distribution", numeric_columns)
@@ -79,7 +90,3 @@ def analyze_page(df):
         ax.set_xlabel(f'{dist_column}', fontsize=14)
         ax.set_ylabel('Frequency', fontsize=14)
         st.pyplot(fig)
-
-# Example usage with a sample DataFrame
-# df = pd.read_csv('your_dataset.csv')
-# analyze_page(df)
