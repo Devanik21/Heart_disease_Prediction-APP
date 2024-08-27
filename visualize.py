@@ -127,4 +127,4 @@ def visualize_page(df):
 # Example usage with a sample DataFrame
 # df = pd.read_csv('your_dataset.csv')
 # visualize_page(df)
-st.write("Visualization Completed !.")
+
