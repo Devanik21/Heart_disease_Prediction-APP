@@ -147,7 +147,7 @@ def analyze_page(df):
         "Select the range of age",
         min_value=20,
         max_value=100,
-        value=(int(df[numeric_columns[0]].min()), int(df[numeric_columns[0]].max()))
+        value=(20,100)
     )
 
     filtered_df = df[(df[numeric_columns[0]] >= min_value) & (df[numeric_columns[0]] <= max_value)]
