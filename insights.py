@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-def insights_page(df):
+def insights_page():
     st.header("🔍 Key Insights & Analysis")
     st.write("Discover the key insights from the dataset with vibrant visualizations and detailed analysis.")
 
