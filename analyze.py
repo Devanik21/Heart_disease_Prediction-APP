@@ -142,6 +142,6 @@ def analyze_page(df):
         fig, ax = plt.subplots(figsize=(10, 6))
         sns.barplot(x=bar_data.index, y=bar_data.values, palette='viridis', ax=ax)
         ax.set_title(f'Bar Plot of {bar_column}', fontsize=16)
-        ax.set_xlabel(f'{bar_column}', fontsize=14)
+        ax.set_xlabel(f'{bar_column}', fontsize=12)
         ax.set_ylabel('Count', fontsize=14)
         st.pyplot(fig)
