@@ -38,7 +38,6 @@ st.markdown("""
             padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
-            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
         }
         .prediction-result h4 {
             color: #0f57a3;
@@ -123,14 +122,21 @@ if selected_page == "Prediction":
 
     st.subheader('Prediction Result')
 
-    if prediction[0] == 'Warning ! Anomaly detected in your heart.':
+    if prediction[0] == 'Warning ! Anomaly  detected in your heart.':
         st.error("⚠️ Warning: Anomaly detected in your heart. There is a risk of heart disease.")
     else:
         st.success("😊 You are safe. No significant risk of heart disease detected.")
 
     st.markdown(
     """
-    <div class="prediction-result">
+    <div class="prediction-result" style="
+        background-color: #2c3e50;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+        color: #ecf0f1;
+    ">
         <h4 style="color: #1abc9c;">Important Note:</h4>
         <p>This prediction is based on the model's analysis of your health data. It should not replace professional medical advice. Always consult with a healthcare provider for personalized advice and further evaluation.</p>
     </div>
