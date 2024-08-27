@@ -44,7 +44,7 @@ def visualize_page(df):
     cmap_option = st.selectbox("Select Heatmap Color Palette", options=['coolwarm', 'viridis', 'magma', 'Spectral'], index=0)
 
     if selected_columns:
-        fig, ax = plt.subplots(figsize=(12, 8))
+        fig, ax = plt.subplots(figsize=(16, 12))
         corr = numeric_df[selected_columns].corr()
         sns.heatmap(corr, annot=True, fmt='.2f', cmap=cmap_option, ax=ax, linewidths=1, linecolor='black')
         ax.set_facecolor('whitesmoke')
