@@ -144,9 +144,9 @@ def analyze_page(df):
     # Custom Interactive Widgets
     st.sidebar.header("Advanced Filters")
     min_value, max_value = st.sidebar.slider(
-        "Select the range of values for numeric columns",
-        min_value=int(df[numeric_columns[0]].min()),
-        max_value=int(df[numeric_columns[0]].max()),
+        "Select the range of age",
+        min_value=20,
+        max_value=100,
         value=(int(df[numeric_columns[0]].min()), int(df[numeric_columns[0]].max()))
     )
 
