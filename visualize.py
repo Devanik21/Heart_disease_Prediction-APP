@@ -8,9 +8,6 @@ def visualize_page(df):
     df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
     df['Cholesterol'] = pd.to_numeric(df['Cholesterol'], errors='coerce')
     df.dropna(subset=['Age', 'Cholesterol'], inplace=True)
-
-    
-   
     
     # Filter to include only numeric columns
     numeric_df = df.select_dtypes(include=['number'])
@@ -47,38 +44,7 @@ def visualize_page(df):
         sns.boxplot(x=numeric_df[boxplot_column], ax=ax)
         st.pyplot(fig)
 
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-def visualize_page(df):
-    # Ensure the correct data types for numeric columns
-    df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
-    df['Cholesterol'] = pd.to_numeric(df['Cholesterol'], errors='coerce')
-    df.dropna(subset=['Age', 'Cholesterol'], inplace=True)
     
-    # Filter to include only numeric columns
-    numeric_df = df.select_dtypes(include=['number'])
-    
-    st.title("Visualize Data")
-    st.write("Explore the visualizations of the heart disease dataset.")
-
-    # 2. Pairplot for Feature Relationships
-    st.subheader("Pairplot for Feature Relationships")
-    pairplot_columns = st.multiselect("Select columns for Pairplot", numeric_df.columns, default=numeric_df.columns[:3])
-
-    if len(pairplot_columns) > 1:
-        pairplot_df = numeric_df[pairplot_columns]
-        if not pairplot_df.empty:
-            fig = sns.pairplot(pairplot_df)
-            st.pyplot(fig)
-
-# Example usage with a sample DataFrame
-# df = pd.read_csv('your_dataset.csv')
-# visualize_page(df)
-
-
     # 3. Violin Plot for Data Distribution
     st.subheader("Violin Plot for Data Distribution")
     violinplot_column = st.selectbox("Select a column for Violin Plot", numeric_df.columns)
