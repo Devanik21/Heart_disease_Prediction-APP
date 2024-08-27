@@ -83,9 +83,12 @@ def visualize_page(df):
     st.subheader("Heatmap for Selected Columns")
     heatmap_columns = st.multiselect("Select columns for a detailed heatmap", numeric_df.columns, default=numeric_df.columns[:5])
     if heatmap_columns:
-        fig, ax = plt.subplots()
-        sns.heatmap(numeric_df[heatmap_columns].T, annot=True, cmap='coolwarm', cbar=True, ax=ax)
-        st.pyplot(fig)
+        # Ensure there's enough data and avoid transposing
+        heatmap_data = numeric_df[heatmap_columns]
+        if not heatmap_data.empty:
+            fig, ax = plt.subplots()
+            sns.heatmap(heatmap_data, annot=True, cmap='coolwarm', cbar=True, ax=ax)
+            st.pyplot(fig)
 
 # Example usage with a sample DataFrame
 # df = pd.read_csv('your_dataset.csv')
